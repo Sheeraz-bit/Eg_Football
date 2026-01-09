@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Noble FC</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="login-body">
+
+    <div class="login-container">
+        <div class="login-header">
+            <img src="../../Nobal FC logo.jpeg" alt="Noble FC Logo">
+            <h2>Admin Portal</h2>
+            <p>Please log in to manage the club website.</p>
+        </div>
+        
+        <form id="loginForm" onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+            <div class="form-group">
+                <label>Username</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Enter username" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Password</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Enter password" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login">Secure Login <i class="fas fa-arrow-right"></i></button>
+        </form>
+        
+        <div class="login-footer">
+            <a href="../index.html">Back to Website</a>
+        </div>
+    </div>
+
+</body>
+</html>

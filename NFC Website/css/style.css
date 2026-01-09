@@ -1,0 +1,652 @@
+/* --- 1. VARIABLES & RESET --- */
+:root {
+    /* Colors extracted from Noble FC Logo & Jersey */
+    --primary-red: #D32F2F;   /* Shield Red */
+    --primary-yellow: #FBC02D; /* Jersey Yellow */
+    --dark: #121212;
+    --light: #F4F4F4;
+    --white: #ffffff;
+    --gray: #757575;
+    
+    /* Transitions */
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--dark);
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { width: 100%; height: auto; display: block; }
+
+/* --- 2. UTILITY CLASSES --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding { padding: 80px 0; }
+.bg-light { background-color: var(--light); }
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: var(--primary-red);
+    color: var(--white);
+    border: 2px solid var(--primary-red);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-red);
+}
+
+.btn-secondary {
+    background-color: var(--primary-yellow);
+    color: var(--dark);
+    border: 2px solid var(--primary-yellow);
+}
+
+.btn-secondary:hover {
+    background-color: transparent;
+}
+
+.btn-outline {
+    border: 2px solid var(--white);
+    color: var(--white);
+}
+
+.btn-outline:hover {
+    background-color: var(--white);
+    color: var(--dark);
+}
+
+/* --- 3. NAVBAR WITH DROPDOWNS --- */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-red);
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links > li {
+    position: relative;
+}
+
+.nav-links a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-red);
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--white);
+    min-width: 200px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition);
+    margin-top: 10px;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--light);
+    color: var(--primary-red);
+}
+
+.nav-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.mobile-btn { display: none; }
+.hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
+
+/* --- 4. HERO SECTION --- */
+.hero {
+    height: 90vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.hero-slide.active { opacity: 1; }
+
+.hero-content {
+    color: var(--white);
+    max-width: 800px;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-btns { display: flex; gap: 20px; justify-content: center; }
+
+.slider-controls div {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--white);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 20px;
+    z-index: 10;
+}
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* --- 5. FIXTURES SECTION (No Scores) --- */
+.fixtures-section {
+    padding: 60px 0;
+    background-color: var(--light);
+}
+
+.fixtures-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.fixtures-header h2 {
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.fixtures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.fixture-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.fixture-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.fixture-image {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--gray);
+}
+
+.fixture-content {
+    padding: 20px;
+}
+
+.fixture-league {
+    font-size: 0.85rem;
+    color: var(--primary-red);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.fixture-description {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.fixture-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.fixture-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.view-all-fixtures {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* --- 6. TEAMS GRID (4 columns) --- */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--dark);
+    text-transform: uppercase;
+}
+
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.team-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.team-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.team-card-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.team-card img { 
+    height: 100%; 
+    width: 100%;
+    object-fit: cover; 
+}
+
+.team-card-content { 
+    padding: 20px; 
+}
+
+.team-card-content h3 { 
+    color: var(--primary-red); 
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.team-badge {
+    display: inline-block;
+    background-color: var(--primary-yellow);
+    color: var(--dark);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.view-profile-btn {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--primary-red);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.view-profile-btn:hover {
+    text-decoration: underline;
+}
+
+/* --- 7. ABOUT SECTION --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.sub-heading { color: var(--primary-red); letter-spacing: 2px; margin-bottom: 10px; }
+.feature-list li { margin-bottom: 10px; font-weight: 500; }
+.feature-list i { color: var(--primary-yellow); margin-right: 10px; }
+
+.about-image { position: relative; }
+.about-image img { border-radius: 10px; }
+.experience-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: var(--primary-yellow);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.experience-badge .years { display: block; font-size: 2rem; font-weight: 800; }
+
+/* --- 8. GALLERY (PDF Layout) --- */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.view-all-btn { 
+    color: var(--primary-red); 
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.view-all-btn:hover {
+    text-decoration: underline;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--gray);
+    min-height: 250px;
+}
+
+.gallery-item img { 
+    height: 100%; 
+    width: 100%;
+    object-fit: cover; 
+    transition: var(--transition); 
+}
+
+.gallery-item:hover img { 
+    transform: scale(1.1); 
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    padding: 20px;
+    color: var(--white);
+    transform: translateY(100%);
+    transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.gallery-overlay p {
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.gallery-overlay .upload-time {
+    font-size: 0.75rem;
+    color: var(--primary-yellow);
+}
+
+/* --- 9. SPONSORS (PDF Layout) --- */
+.sponsors-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.sponsors-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--dark);
+}
+
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.sponsor-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.sponsor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.sponsor-logo {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.sponsor-logo img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.sponsor-placeholder {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gray);
+    opacity: 0.5;
+}
+
+.sponsor-name {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.support-cta {
+    margin-top: 30px;
+}
+
+.support-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--gray);
+}
+
+/* --- 10. FOOTER --- */
+footer {
+    background-color: #111;
+    color: var(--white);
+    padding: 60px 0 20px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+.footer-links ul li { margin-bottom: 10px; }
+.footer-links a:hover { color: var(--primary-yellow); }
+.social-icons a {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: var(--white);
+    transition: var(--transition);
+}
+.social-icons a:hover { color: var(--primary-yellow); }
+.copyright {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    color: #666;
+}
+
+/* --- 11. ANIMATION CLASSES --- */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .teams-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links, .nav-actions { display: none; }
+    .hamburger { display: block; }
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 20px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    }
+    
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+    
+    .mobile-btn { display: block; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .about-grid, .footer-grid { grid-template-columns: 1fr; }
+    .teams-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .fixtures-grid { grid-template-columns: 1fr; }
+}

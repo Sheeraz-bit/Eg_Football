@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noble FC | District Football Club</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVBAR WITH DROPDOWNS -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="../../Nobal FC logo.jpeg" alt="Noble FC Logo">
+                <span class="logo-text">NOBLE FC</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                
+                <!-- The Club Dropdown -->
+                <li class="dropdown">
+                    <a href="#club" class="dropdown-toggle">
+                        The Club <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#staff">Staff & Management</a></li>
+                        <li><a href="#sponsors">Sponsors</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Teams Dropdown -->
+                <li class="dropdown">
+                    <a href="#teams" class="dropdown-toggle">
+                        Teams <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#seniors">Seniors Team</a></li>
+                        <li><a href="#u20">Under-20s</a></li>
+                        <li><a href="#u18">Under-18s</a></li>
+                        <li><a href="#u16">Under-16s</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="#fixtures">Fixtures</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li class="mobile-btn"><a href="#join">Join Us</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="#join" class="btn btn-primary">Join Us</a>
+                <a href="#" target="_blank" class="btn btn-secondary">Support Us</a>
+            </div>
+
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home" class="hero">
+        <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../../download\ \(1\).jpeg');">
+            <div class="container hero-content">
+                <h1 class="animate-up">Pride of the District</h1>
+                <p class="animate-up delay-1">Developing talent, building character, and winning trophies.</p>
+                <div class="hero-btns animate-up delay-2">
+                    <a href="#teams" class="btn btn-primary">Meet The Teams</a>
+                    <a href="#club" class="btn btn-outline">About The Club</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../../download\ \(2\).jpeg');">
+            <div class="container hero-content">
+                <h1>Champions 2024</h1>
+                <p>Join a winning culture. Trials open for U-18 and Seniors.</p>
+                <div class="hero-btns">
+                    <a href="#join" class="btn btn-primary">Register Now</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-controls">
+            <div class="prev"><i class="fas fa-chevron-left"></i></div>
+            <div class="next"><i class="fas fa-chevron-right"></i></div>
+        </div>
+    </header>
+
+    <!-- FIXTURES SECTION (NO SCORES) -->
+    <section id="fixtures" class="fixtures-section">
+        <div class="container">
+            <div class="fixtures-header">
+                <h2>Fixtures</h2>
+            </div>
+            
+            <div class="fixtures-grid">
+                <!-- Fixture Card 1 -->
+                <div class="fixture-card reveal">
+                    <div class="fixture-image" style="background-image: url('../../download.jpeg');"></div>
+                    <div class="fixture-content">
+                        <div class="fixture-league">District Premier League</div>
+                        <div class="fixture-description">Noble FC vs City United</div>
+                        <div class="fixture-meta">
+                            <span><i class="far fa-calendar"></i> Nov 25, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Nagpur</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fixture Card 2 -->
+                <div class="fixture-card reveal">
+                    <div class="fixture-image" style="background-image: url('../../download (1).jpeg');"></div>
+                    <div class="fixture-content">
+                        <div class="fixture-league">Youth Championship</div>
+                        <div class="fixture-description">U18 Semi-Final Match</div>
+                        <div class="fixture-meta">
+                            <span><i class="far fa-calendar"></i> Nov 28, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Nagpur</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fixture Card 3 -->
+                <div class="fixture-card reveal">
+                    <div class="fixture-image" style="background-image: url('../../download (2).jpeg');"></div>
+                    <div class="fixture-content">
+                        <div class="fixture-league">District Premier League</div>
+                        <div class="fixture-description">Away Match vs Rivals FC</div>
+                        <div class="fixture-meta">
+                            <span><i class="far fa-calendar"></i> Dec 5, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Mumbai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-all-fixtures">
+                <a href="#" class="btn btn-primary">View All Fixtures <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR SQUADS SECTION (4 TEAMS IN A ROW) -->
+    <section id="teams" class="teams-section section-padding">
+        <div class="container">
+            <h2 class="section-title reveal">Meet Our Players</h2>
+            <div class="teams-grid">
+                <!-- Seniors Team -->
+                <div class="team-card reveal" id="seniors">
+                    <div class="team-card-image">
+                        <img src="../../download (1).jpeg" alt="Senior Team">
+                    </div>
+                    <div class="team-card-content">
+                        <span class="team-badge">Seniors</span>
+                        <h3>Senior Team</h3>
+                        <a href="#" class="view-profile-btn">View Profile <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- U20 Team -->
+                <div class="team-card reveal" id="u20">
+                    <div class="team-card-image">
+                        <img src="../../download (2).jpeg" alt="U20 Team">
+                    </div>
+                    <div class="team-card-content">
+                        <span class="team-badge">U20</span>
+                        <h3>Under-20s</h3>
+                        <a href="#" class="view-profile-btn">View Profile <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- U18 Team -->
+                <div class="team-card reveal" id="u18">
+                    <div class="team-card-image">
+                        <img src="../../download (3).jpeg" alt="U18 Team">
+                    </div>
+                    <div class="team-card-content">
+                        <span class="team-badge">U18</span>
+                        <h3>Under-18s</h3>
+                        <a href="#" class="view-profile-btn">View Profile <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- U16 Team -->
+                <div class="team-card reveal" id="u16">
+                    <div class="team-card-image">
+                        <img src="../../download.jpeg" alt="U16 Team">
+                    </div>
+                    <div class="team-card-content">
+                        <span class="team-badge">U16</span>
+                        <h3>Under-16s</h3>
+                        <a href="#" class="view-profile-btn">View Profile <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION (UNTOUCHED) -->
+    <section id="club" class="about-teaser section-padding bg-light">
+        <div class="container about-grid">
+            <div class="about-text reveal">
+                <h4 class="sub-heading">WHO WE ARE</h4>
+                <h2>More Than Just A Club</h2>
+                <p>Founded in memory of Late Badar Sir, Noble FC has been the heart of football in our district. We believe in discipline, hard work, and community.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Professional Coaching Staff</li>
+                    <li><i class="fas fa-check-circle"></i> Top Tier Training Facilities</li>
+                    <li><i class="fas fa-check-circle"></i> Pathway to Pro Football</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Read Our Story</a>
+            </div>
+            <div class="about-image reveal">
+                <img src="../../download.jpeg" alt="Club Trophy">
+                <div class="experience-badge">
+                    <span class="years">25+</span>
+                    <span class="text">Years of Excellence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION (PDF LAYOUT) -->
+    <section id="gallery" class="gallery-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Latest From Gallery</h2>
+                <a href="#" class="view-all-btn">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="gallery-grid">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item reveal">
+                    <img src="../../download.jpeg" alt="Match Action">
+                    <div class="gallery-overlay">
+                        <h4>Championship Victory</h4>
+                        <p>Celebrating our latest trophy win</p>
+                        <span class="upload-time">Nov 20, 2025</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item reveal">
+                    <img src="../../download (1).jpeg" alt="Training">
+                    <div class="gallery-overlay">
+                        <h4>Training Session</h4>
+                        <p>Preparing for the big game</p>
+                        <span class="upload-time">Nov 18, 2025</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item reveal">
+                    <img src="../../download (2).jpeg" alt="Awards">
+                    <div class="gallery-overlay">
+                        <h4>Team Spirit</h4>
+                        <p>Unity on and off the field</p>
+                        <span class="upload-time">Nov 15, 2025</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item reveal">
+                    <img src="../../download (3).jpeg" alt="Youth Team">
+                    <div class="gallery-overlay">
+                        <h4>Youth Development</h4>
+                        <p>Building future stars</p>
+                        <span class="upload-time">Nov 12, 2025</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item reveal">
+                    <img src="../../download.jpeg" alt="Match Day">
+                    <div class="gallery-overlay">
+                        <h4>Match Day Atmosphere</h4>
+                        <p>Our passionate supporters</p>
+                        <span class="upload-time">Nov 10, 2025</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item reveal">
+                    <img src="../../download (1).jpeg" alt="Community">
+                    <div class="gallery-overlay">
+                        <h4>Community Outreach</h4>
+                        <p>Giving back to our fans</p>
+                        <span class="upload-time">Nov 8, 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPONSORS SECTION (PDF LAYOUT) -->
+    <section id="sponsors" class="sponsors-section bg-light">
+        <div class="container">
+            <h2 class="reveal">Support Our Club</h2>
+            <div class="sponsors-grid">
+                <!-- Sponsor Card 1 -->
+                <div class="sponsor-card reveal">
+                    <div class="sponsor-logo">
+                        <div class="sponsor-placeholder">Sponsor Logo</div>
+                    </div>
+                    <div class="sponsor-name">Local Business 1</div>
+                </div>
+
+                <!-- Sponsor Card 2 -->
+                <div class="sponsor-card reveal">
+                    <div class="sponsor-logo">
+                        <div class="sponsor-placeholder">Sponsor Logo</div>
+                    </div>
+                    <div class="sponsor-name">City Sports Cafe</div>
+                </div>
+
+                <!-- Sponsor Card 3 -->
+                <div class="sponsor-card reveal">
+                    <div class="sponsor-logo">
+                        <div class="sponsor-placeholder">Sponsor Logo</div>
+                    </div>
+                    <div class="sponsor-name">Tech Solutions Ltd</div>
+                </div>
+
+                <!-- Sponsor Card 4 -->
+                <div class="sponsor-card reveal">
+                    <div class="sponsor-logo">
+                        <div class="sponsor-placeholder">Sponsor Logo</div>
+                    </div>
+                    <div class="sponsor-name">District Bank</div>
+                </div>
+            </div>
+
+            <div class="support-cta reveal">
+                <p>Want to support our club and help us grow?</p>
+                <a href="#" class="btn btn-secondary">Support Us <i class="fas fa-heart"></i></a>
+            </div>
+
+            <div class="view-all-fixtures" style="margin-top: 20px;">
+                <a href="#" class="view-all-btn">View All Sponsors <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <div class="logo">
+                    <img src="../../Nobal FC logo.jpeg" alt="Logo" style="width: 50px;">
+                    <span>NOBLE FC</span>
+                </div>
+                <p>The official website of Noble Football Club. Dedicated to the beautiful game.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Staff & Management</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="../admin/login.html" style="color: #666; font-size: 0.8rem;">Admin Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Noble Football Club. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

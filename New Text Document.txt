@@ -1,0 +1,76 @@
+-- 1) Create database
+CREATE DATABASE IF NOT EXISTS football_club
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE football_club;
+
+-- 2) Fixture table
+CREATE TABLE fixture (
+    id              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title           VARCHAR(255)        NOT NULL,
+    description     TEXT                NULL,
+    image           VARCHAR(2048)       NULL, -- URL or file path
+    status          ENUM('WINNER', 'RUNNER_UP', 'DONT_SHOW') 
+                                        NOT NULL DEFAULT 'DONT_SHOW',
+    location        VARCHAR(255)        NULL,
+    match_datetime  DATETIME            NOT NULL,
+    
+    created_at      TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP
+                                        ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 3) Player table
+CREATE TABLE player (
+    id              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name            VARCHAR(255)        NOT NULL,
+    description     TEXT                NULL,
+    date_of_birth   DATE                NULL,
+    position        VARCHAR(100)        NULL, -- e.g. "Forward", "Goalkeeper"
+    role            ENUM('SENIOR', 'U20', 'U18', 'U16') NOT NULL,
+    image           VARCHAR(2048)       NULL, -- URL or file path
+    
+    created_at      TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP
+                                        ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 4) Gallery table
+CREATE TABLE gallery (
+    id              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title           VARCHAR(255)        NOT NULL,
+    description     TEXT                NULL,
+    media_type      ENUM('IMAGE', 'VIDEO') NOT NULL,
+    media_path      VARCHAR(2048)       NOT NULL, -- URL or file path
+    media_datetime  DATETIME            NULL,
+    
+    created_at      TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP
+                                        ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 5) Sponsor table
+CREATE TABLE sponsor (
+    id              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name            VARCHAR(255)        NOT NULL,
+    logo            VARCHAR(2048)       NULL, -- URL or file path
+    link            VARCHAR(2048)       NULL, -- sponsor website URL
+    role            ENUM('PRIMARY', 'SECONDARY') NOT NULL,
+    
+    created_at      TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP
+                                        ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 6) Users table
+CREATE TABLE users (
+    id            INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username      VARCHAR(150)        NOT NULL UNIQUE,
+    password      VARCHAR(255)        NOT NULL, -- store HASHED password (bcrypt)
+    
+    created_at    TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at    TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP
+                                     ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+

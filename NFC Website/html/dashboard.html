@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Noble FC</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../../Nobal FC logo.jpeg" alt="Logo">
+                <h3>Noble FC <br><span>Admin Panel</span></h3>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="active" onclick="switchTab('overview')"><i class="fas fa-th-large"></i> Overview</li>
+                <li onclick="switchTab('matches')"><i class="fas fa-futbol"></i> Match Center</li>
+                <li onclick="switchTab('teams')"><i class="fas fa-users"></i> Teams & Players</li>
+                <li onclick="switchTab('gallery')"><i class="fas fa-images"></i> Gallery</li>
+                <li onclick="switchTab('sponsors')"><i class="fas fa-hand-holding-usd"></i> Sponsors</li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="login.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h2 id="pageTitle">Dashboard Overview</h2>
+                </div>
+                <div class="admin-profile">
+                    <span>Welcome, Admin</span>
+                    <div class="profile-pic"><i class="fas fa-user"></i></div>
+                </div>
+            </header>
+
+            <div id="overview" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="icon bg-red"><i class="fas fa-users"></i></div>
+                        <div class="info">
+                            <h3>48</h3>
+                            <p>Total Players</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon bg-yellow"><i class="fas fa-calendar-day"></i></div>
+                        <div class="info">
+                            <h3>12</h3>
+                            <p>Upcoming Fixtures</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon bg-dark"><i class="fas fa-image"></i></div>
+                        <div class="info">
+                            <h3>150+</h3>
+                            <p>Gallery Photos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel status-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-broadcast-tower"></i> Website Status Banner</h3>
+                        <p>This controls the colored banner on the homepage.</p>
+                    </div>
+                    <div class="status-controls">
+                        <button class="status-btn green active" onclick="setStatus('green')">MATCHES ON</button>
+                        <button class="status-btn yellow" onclick="setStatus('yellow')">INSPECTION</button>
+                        <button class="status-btn red" onclick="setStatus('red')">CANCELLED</button>
+                    </div>
+                    <div id="statusMessage" class="status-feedback">Current: All Games ON</div>
+                </div>
+            </div>
+
+            <div id="matches" class="content-section">
+    <div class="panel">
+        <h3><i class="fas fa-trophy"></i> Add/Edit Fixture</h3>
+        <form class="admin-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>League / Tournament Name</label>
+                    <input type="text" placeholder="e.g. District Cup">
+                </div>
+                <div class="form-group">
+                    <label>Select Team</label>
+                    <select>
+                        <option>Seniors Team</option>
+                        <option>Under 20s</option>
+                        <option>Under 18s</option>
+                        <option>Under 16s</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Match Date</label>
+                    <input type="date">
+                </div>
+                <div class="form-group">
+                    <label>Result / Status</label>
+                    <select id="resultStatus" onchange="toggleTrophyIcon()">
+                        <option value="dont_show">Don't Show Result</option>
+                        <option value="winner">🏆 Winner</option>
+                        <option value="runner_up">🥈 Runner Up</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Description (Optional)</label>
+                <input type="text" placeholder="e.g. Final match vs City United">
+            </div>
+
+            <button type="button" class="btn-save">Publish Fixture</button>
+        </form>
+    </div>
+
+    <div class="panel" style="margin-top: 20px;">
+        <h3>Current Fixtures List</h3>
+        <table style="width:100%; text-align:left; border-collapse:collapse; margin-top:10px;">
+            <tr style="border-bottom:1px solid #ddd; color:#666;">
+                <th style="padding:10px;">League</th>
+                <th>Team</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td style="padding:10px;">Independence Cup</td>
+                <td>Seniors</td>
+                <td><span style="color:green; font-weight:bold;">🏆 Winner</span></td>
+                <td><button style="color:red; background:none; border:none; cursor:pointer;">Delete</button></td>
+            </tr>
+            <tr>
+                <td style="padding:10px;">Winter League</td>
+                <td>U18s</td>
+                <td><span style="color:#999;">--</span></td>
+                <td><button style="color:red; background:none; border:none; cursor:pointer;">Delete</button></td>
+            </tr>
+        </table>
+    </div>
+            </div>
+
+            <div id="gallery" class="content-section">
+                <div class="upload-zone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop Photos Here</h3>
+                    <p>or click to browse</p>
+                    <input type="file" hidden>
+                </div>
+                
+                <div class="recent-uploads">
+                    <h3>Recent Uploads</h3>
+                    <div class="upload-grid">
+                        <div class="upload-item"><img src="../download.jpeg"></div>
+                        <div class="upload-item"><img src="../download (1).jpeg"></div>
+                        <div class="upload-item"><img src="../download (3).jpeg"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="teams" class="content-section">
+                <div class="panel">
+                    <h3>Manage Squads</h3>
+                    <p>Select a team to edit players.</p>
+                    <div class="form-row">
+                        <button class="btn-save">Seniors</button>
+                        <button class="btn-save" style="background: #555;">Under 18s</button>
+                        <button class="btn-save" style="background: #555;">Under 16s</button>
+                    </div>
+                </div>
+             </div>
+             
+             <div id="sponsors" class="content-section">
+                <div class="panel">
+                    <h3>Add New Sponsor</h3>
+                    <form class="admin-form">
+                        <input type="text" placeholder="Sponsor Name">
+                        <input type="file" style="margin-top: 10px;">
+                        <button class="btn-save" style="margin-top: 10px;">Add Sponsor</button>
+                    </form>
+                </div>
+             </div>
+
+        </main>
+    </div>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>
